@@ -9,5 +9,11 @@ This is also a Django application. The buttons are displayed at the main index.
 
 **WARNING** - This isn't an official project that I want to maintain. I just wanted to share this code for others to use if they need it. Don't expect any updates on this project.
 
+## Screenshot(s)
+![screenshot1](https://g.gflclan.com/3998-02-02-2022-VMzthWbg.png)
+
+## Videos
+[![Click here to watch!](https://g.gflclan.com/3999-02-02-2022-KRhfDPcw.png)](https://www.youtube.com/watch?v=VfPRVhGqVYo)
+
 ## Credits
 * [Christian Deacon](https://github.com/gamemann)
