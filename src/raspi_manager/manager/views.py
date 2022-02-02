@@ -21,7 +21,7 @@ def perform_steam_link(start = True):
         res_one = None
 
         try:
-            res_one = subprocess.Popen(["while IFS= read -r pid do pkill -TERM -P $pid done <<< `pgrep -x steamlink.sh`"], shell = True, start_new_session = True)
+            res_one = subprocess.Popen(["../../scripts/stop_steamlink.sh`"], shell = True, start_new_session = True)
         except Exception as e:
             print("Error stopping Steam Link => " + str(e) + ".")
             
