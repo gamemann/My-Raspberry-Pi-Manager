@@ -29,10 +29,7 @@ def perform_steam_link(start = True):
 
         res_one.wait()
 
-        if res_one.returncode is None or res_one.returncode != 0:
-            print("Error stopping Steam Link process.")
-
-            res = res_one.returncode
+        res = res_one.returncode
 
     return res
 
