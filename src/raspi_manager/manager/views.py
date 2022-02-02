@@ -8,35 +8,31 @@ def perform_steam_link(start = True):
 
     if start:
         try:
-            tmp = subprocess.Popen(["steamlink", "> /dev/null 2>&1 &"], shell = True, env = dict(os.environ, DISPLAY=":0"), stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
+            tmp = subprocess.Popen(["steamlink &"], shell = True, start_new_session = True, env = dict(os.environ, DISPLAY=":0"), stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
         except Exception as e:
-            print("Error starting Steam Link -> " + e + ".")
+            print("Error starting Steam Link -> " + str(e) + ".")
             
             return res
+
+        tmp.wait()
 
         res = tmp.returncode
     else:
         res_one = None
-        res_two = None
 
         try:
-            res_one = subprocess.Popen(["pkill", "-9", "-f", "steamlink"])
-            res_two = subprocess.Popen(["pkill",  "-9", "-f", "streaming_client"])
+            res_one = subprocess.Popen(["while IFS= read -r pid do pkill -TERM -P $pid done <<< `pgrep -x steamlink.sh`"], shell = True, start_new_session = True)
         except Exception as e:
-            print("Error stopping Steam Link => " + e + ".")
+            print("Error stopping Steam Link => " + str(e) + ".")
             
             return res
+
+        res_one.wait()
 
         if res_one.returncode is None or res_one.returncode != 0:
             print("Error stopping Steam Link process.")
 
             res = res_one.returncode
-        elif res_two.returncode is None or res_two.returncode != 0:
-            print("Error stopping Steam Link's streaming service.")
-
-            res = res_two.returncode
-        else:
-            res = 0
 
     return res
 
