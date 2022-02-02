@@ -16,7 +16,7 @@ def manage(request):
             res = 0
 
             try:
-                res = subprocess.run(["steamlink", "> /dev/null 2>&1 &"], env=dict(os.environ, DISPLAY=":0"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                res = subprocess.Popen(["steamlink", "> /dev/null 2>&1 &"], env=dict(os.environ, DISPLAY=":0"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             except Exception as e:
                 print("Error starting Steam Link -> " + e + ".")
                 success = False 
