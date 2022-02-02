@@ -14,8 +14,7 @@ def perform_steam_link(start = True):
             
             return res
 
-        res = tmp.retuncode
-
+        res = tmp.returncode
     else:
         res_one = None
         res_two = None
@@ -52,8 +51,6 @@ def manage(request):
         # Check if Steam link start is set.
         if "sl-start" in request.POST:
             res = perform_steam_link()
-
-
 
             if res is None or res != 0:
                 print("Error starting Steam Link => Result isn't 0 (" + str(res) + ").")
