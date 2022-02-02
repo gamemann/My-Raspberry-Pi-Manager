@@ -1,0 +1,36 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Manager</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'network/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'network/custom.css' %}" />
+        <script src="{% static 'network/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'network/custom.js' %}" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container">
+            {% if action %}
+                {% if success %}
+                    <div class="alert alert-success" role="alert">
+                        Last action performed successfully! 
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger" role="alert">
+                        Last action performed failed. 
+                    </div>
+                {% endif %}
+            {% endif %}
+            <div class="page-header">
+                <h1 class="text-center">Manager</h1>
+            </div>
+
+            
+            <form action="/" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="sl-start" class="btn btn-primary">Steam Link - Start</button>
+                <button type="submit" name="sl-stop" class="btn btn-primary">Steam Link - Stop</button>
+            </form>
+        </div>
+    </body>
+</html>
