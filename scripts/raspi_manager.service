@@ -1,0 +1,12 @@
+[Unit]
+Description=Raspberry Pi Manager.
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+WorkingDirectory=/etc/raspi_manager/
+ExecStart=/usr/bin/uwsgi --ini uwsgi_production.ini
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
