@@ -6,7 +6,7 @@ Requires=network-online.target
 [Service]
 WorkingDirectory=/etc/raspi_manager/
 User=christian
-ExecStart=uwsgi --ini uwsgi_production.ini
+ExecStart=/home/christian/.local/bin/uwsgi --ini uwsgi_production.ini
 Restart=always
 
 [Install]
