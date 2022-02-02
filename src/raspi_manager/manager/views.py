@@ -22,7 +22,7 @@ def manage(request):
                 success = False 
 
             if res is None or res.returncode != 0:
-                print("Error starting Steam link => Result isn't 0 (" + str(res) + ").")
+                print("Error starting Steam link => Result isn't 0 (" + str(res.returncode) + ").")
 
                 success = False
 
