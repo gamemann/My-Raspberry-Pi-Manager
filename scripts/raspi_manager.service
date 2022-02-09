@@ -1,13 +1,16 @@
 [Unit]
 Description=Raspberry Pi Manager.
-After=network-online.target
-Requires=network-online.target
+After=syslog.target
 
 [Service]
-WorkingDirectory=/etc/raspi_manager/
-User=christian
-ExecStart=/home/christian/.local/bin/uwsgi --ini uwsgi_production.ini
+WorkingDirectory=/home/pi
+User=pi
+ExecStart=/home/pi/.local/bin/uwsgi --ini /etc/raspi_manager/uwsgi_production.ini
 Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
